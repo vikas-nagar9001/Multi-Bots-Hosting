@@ -1,9 +1,16 @@
 {   
-    "restrict-bot": {
+    "login-restrict-bot": {
         "source": "https://github.com/vikas-nagar9001/vikas-restrict-bot.git",
         "env": {
             "TOKEN": ""
         },
         "run": "bot.py"
+    },
+    "simple-bot": {
+        "source": "https://github.com/vikas-nagar9001/savesimplebot.git",
+        "env": {
+            "TOKEN": ""
+        },
+        "run": "main.py"
     }
 }
