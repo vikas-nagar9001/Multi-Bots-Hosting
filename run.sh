@@ -34,3 +34,7 @@ for bot in $(cat config.json | jq -r 'to_entries[] | "\(.key),\(.value.source)"'
 done
 
 echo "Bot setup process completed."
+
+# After Gunicorn has started, run the worker script
+echo "Starting the worker..."
+python3 workerr3.py
