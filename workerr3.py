@@ -62,11 +62,11 @@ for bot_name, bot_config in bots.items():
         continue
 
     # Run the bot's main script
-    print(f"Command to run: python {bot_file}")
+    print(f"Command to run: python3 {bot_file}")
     print(f"Starting {bot_name} bot with {bot_file}")
     try:
         # Start the bot in a subprocess
-        p = subprocess.Popen(['python', bot_file], cwd=bot_dir, env=os.environ)
+        p = subprocess.Popen(['python3', bot_file], cwd=bot_dir, env=os.environ)
         bot_processes.append(p)
         print(f"Successfully started bot: {bot_name}")
     except Exception as e:
