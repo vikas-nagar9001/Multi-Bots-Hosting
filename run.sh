@@ -37,5 +37,5 @@ echo "Bot setup process completed."
 
 # After Gunicorn has started, run the worker script
 echo "Starting the python script..."
-gunicorn app:app & python3 workerr3.py
+gunicorn app:app & python worker.py
 
