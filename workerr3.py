@@ -24,7 +24,8 @@ for bot_name, bot_config in bots.items():
     for env_name, env_value in bot_config['env'].items():
         os.environ[env_name] = env_value
     
-    bot_dir = os.path.join("app", bot_name)  # Ensure proper path handling
+    #bot_dir = os.path.join("app", bot_name)  # Ensure proper path handling
+    bot_dir = f"app/{bot_name}"
     requirements_file = os.path.join(bot_dir, 'requirements.txt')
     bot_file = os.path.join(bot_dir, bot_config['run'])
 
