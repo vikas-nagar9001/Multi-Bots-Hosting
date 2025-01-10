@@ -20,8 +20,9 @@ for bot_name, bot_config in bots.items():
     print(f"Starting setup for bot: {bot_name}")
 
     # Check if bot config has the required fields
-    if 'env' not in bot_config or 'run' not in bot_config:
-        print(f"Missing required fields in config for bot {bot_name}. Skipping bot.")
+    if 'env' not in bot_config or 'run' not in bot_config:     
+        print(f"Check env and run command in config.json  for bot {bot_name}")
+        print(f"Missing required fields in configfile for bot {bot_name}. Skipping bot.")
         continue
 
     # Set the environment variables for this bot (if any)
