@@ -194,23 +194,4 @@ Add debug prints in `worker.py` to trace bot startup issues.
 
 This project is open source and available under the [MIT License](LICENSE).
 
-## 📞 Support
-
-If you encounter any issues or have questions:
-- Open an issue on GitHub
-- Check the troubleshooting section above
-- Review the logs for detailed error messages
-
-## 🎯 Roadmap
-
-- [ ] Web-based configuration interface
-- [ ] Real-time bot status monitoring
-- [ ] Automatic bot restart on failure
-- [ ] Resource usage monitoring
-- [ ] Bot log aggregation and viewing
-- [ ] Support for more bot frameworks
-- [ ] Health check endpoints
-
----
-
 **Note**: This project is designed for hosting multiple Telegram bots, but can be adapted for other types of bot applications with minimal modifications.
