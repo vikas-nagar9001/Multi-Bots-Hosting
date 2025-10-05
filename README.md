@@ -1,65 +1,216 @@
-# MultiBots
+# Multi-Bots-Hosting
 
-_Have you encountered the problem where you have to host less resource intense Telegram Bots for free and you can only host a bot for an account but you wanted to host all bots in one instance, well say no more..._
+A Docker-based hosting solution for running multiple Telegram bots simultaneously. This project allows you to configure, deploy, and manage multiple bot instances from a single platform with automatic dependency management and environment variable configuration.
 
-_You can run multiple bots in a same instance, for now it only works for pure python bots (no docker support yet) but you need to host this on services which provide Docker support._
+## 🚀 Features
 
----
+- **Multi-Bot Support**: Host multiple Telegram bots simultaneously
+- **Automatic Setup**: Clone repositories and install dependencies automatically
+- **Docker Support**: Containerized deployment for easy scaling
+- **Environment Management**: Individual environment variables for each bot
+- **Web Interface**: Simple Flask web interface for monitoring
+- **Auto-Ping**: Built-in ping service to keep the system alive
+- **Private Repository Support**: Handle both public and private repositories with token authentication
 
-## Guide
-
-1. *Fork this repositary*
-2. *Edit CONFIG.json to your liking*
-3. *Host that repositary*
-4. *Profit*
-
----
-
-## Features
-
-* **Stay Updated** since it clones from GitHub.
-* **Extend** you can extend this to any number of bots by just adding more objects (see [Example](#example) below) although i recommend not to exceed 5 for 500 MB memory.
-* **ENVs** you can set different ENV values for different bots even with same name.
-* **Control** you can also set script file from where execution starts for that bot.
-* **Private** you can also clone private repositories with help of Tokens. (see [Example](#example) below)
-* **Web App** uses Flask to connect to service, so that it can be hosted as Dynamic Web Apps which is required for services like [render](https://render.com/), [scalingo](https://scalingo.com/) etc.
-
----
-
-## Example
+## 📁 Project Structure
 
 ```
-{   
-    "Ebook": {
-        "source": "https://github.com/bipinkrish/Ebooks-Bot.git",
-        "env": {
-            "TOKEN": "xxx",
-            "ID": "111",
-            "HASH": "yyy",
-            "REMIX_ID": "123",
-            "REMIX_KEY": "abc123",
-            "IA_EMAIL": "abcd@gmail.com",
-            "IA_PASS": "pass@gmail.com"
-        },
-        "run": "main.py"
+Multi-Bots-Hosting/
+├── app.py              # Flask web application
+├── worker.py           # Bot worker process manager
+├── ping_server.py      # Keep-alive ping server
+├── config.json         # Bot configuration file
+├── requirements.txt    # Python dependencies
+├── run.sh             # Setup script for bot repositories
+├── Dockerfile         # Docker container configuration
+└── README.md          # Project documentation
+```
+
+## ⚙️ Configuration
+
+### config.json Structure
+
+The `config.json` file defines all your bots and their configurations:
+
+```json
+{
+  "bot-name": {
+    "source": "https://github.com/username/bot-repo.git",
+    "env": {
+      "BOT_TOKEN": "your-bot-token",
+      "API_ID": "your-api-id",
+      "API_HASH": "your-api-hash",
+      "SESSION_STRING": "your-session-string"
     },
-    "Link": {
-        "source": "https://github.com/bipinkrish/Link-Bypasser-Bot.git",
-        "env": {
-            "TOKEN": "fff",
-            "ID": "222",
-            "HASH": "123abc"
-        },
-        "run": "app.py"
-    },
-    "Private": {
-        "source": "https://bipinkrish:ghp_token@github.com/bipinkrish/private.git",
-        "env": {
-            "TOKEN": "yyy",
-            "ID": "444",
-            "HASH": "abc321"
-        },
-        "run": "bot.py"
-    }
+    "run": "main.py"
+  }
 }
 ```
+
+#### Configuration Fields:
+- **source**: Git repository URL (supports both public and private repos)
+- **env**: Environment variables specific to this bot
+- **run**: Entry point file for the bot (e.g., `main.py`, `bot.py`)
+
+#### Private Repository Access:
+For private repositories, use token authentication:
+```json
+"source": "https://username:token@github.com/username/private-repo.git"
+```
+
+## 🛠️ Installation & Setup
+
+### Method 1: Docker (Recommended)
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/vikas-nagar9001/Multi-Bots-Hosting.git
+   cd Multi-Bots-Hosting
+   ```
+
+2. **Configure your bots:**
+   Edit `config.json` with your bot configurations
+
+3. **Build and run with Docker:**
+   ```bash
+   docker build -t multi-bots-hosting .
+   docker run -d -p 10000:10000 multi-bots-hosting
+   ```
+
+### Method 2: Local Setup
+
+1. **Prerequisites:**
+   - Python 3.9+
+   - Git
+   - jq (for JSON parsing in bash)
+
+2. **Install dependencies:**
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+3. **Setup bots:**
+   ```bash
+   chmod +x run.sh
+   ./run.sh
+   ``````
+
+## 🏃‍♂️ Running on Windows
+
+### Using PowerShell:
+
+1. **Install WSL (Windows Subsystem for Linux)** if not already installed:
+   ```powershell
+   wsl --install
+   ```
+
+2. **Run the bash script through WSL:**
+   ```powershell
+   wsl bash run.sh
+   ```
+   
+## 🔧 How It Works
+
+1. **Setup Phase (`run.sh`)**:
+   - Reads bot configurations from `config.json`
+   - Clones each bot repository
+   - Installs dependencies for each bot
+
+2. **Runtime Phase (`worker.py`)**:
+   - Sets environment variables for each bot
+   - Checks and installs missing dependencies
+   - Starts each bot as a separate process
+   - Monitors bot processes
+
+3. **Web Interface (`app.py`)**:
+   - Provides a simple web interface on port 10000
+   - Shows system status
+
+4. **Keep-Alive (`ping_server.py`)**:
+   - Sends periodic ping requests
+   - Prevents system from going idle
+
+## 📊 Monitoring
+
+- **Web Interface**: Access `http://localhost:10000` to view the status page
+- **Logs**: Check console output for bot startup and error messages
+- **Process Status**: The worker script provides detailed logging for each bot
+
+## 🔒 Security Considerations
+
+- **Environment Variables**: Store sensitive tokens and credentials in the `env` section of `config.json`
+- **Private Repositories**: Use personal access tokens for private repo access
+- **Docker**: Run in isolated containers for better security
+- **Secrets Management**: Consider using external secret management for production
+
+## 🐛 Troubleshooting
+
+### Common Issues:
+
+1. **Git Clone Fails**:
+   - Check repository URL and access permissions
+   - For private repos, ensure token has proper permissions
+
+2. **Dependency Installation Fails**:
+   - Verify `requirements.txt` exists in bot repository
+   - Check Python version compatibility
+
+3. **Bot Fails to Start**:
+   - Verify environment variables are correct
+   - Check bot entry point file exists
+   - Review bot-specific error messages
+
+4. **Windows Bash Script Issues**:
+   - Use WSL for running bash scripts
+   - Or use Docker for cross-platform compatibility
+
+### Debug Mode:
+Add debug prints in `worker.py` to trace bot startup issues.
+
+## 🚀 Deployment
+
+### Production Deployment:
+
+1. **Use environment variables** instead of hardcoding tokens in `config.json`
+2. **Set up proper logging** with log rotation
+3. **Use process managers** like systemd or supervisor
+4. **Configure reverse proxy** (nginx) for the web interface
+5. **Set up monitoring** and alerting for bot health
+
+### Scaling:
+- Use Docker Compose for multi-container deployments
+- Implement load balancing for high-traffic bots
+- Consider using Kubernetes for large-scale deployments
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## 📄 License
+
+This project is open source and available under the [MIT License](LICENSE).
+
+## 📞 Support
+
+If you encounter any issues or have questions:
+- Open an issue on GitHub
+- Check the troubleshooting section above
+- Review the logs for detailed error messages
+
+## 🎯 Roadmap
+
+- [ ] Web-based configuration interface
+- [ ] Real-time bot status monitoring
+- [ ] Automatic bot restart on failure
+- [ ] Resource usage monitoring
+- [ ] Bot log aggregation and viewing
+- [ ] Support for more bot frameworks
+- [ ] Health check endpoints
+
+---
+
+**Note**: This project is designed for hosting multiple Telegram bots, but can be adapted for other types of bot applications with minimal modifications.

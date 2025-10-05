@@ -2,21 +2,30 @@
 "simple-bot2": {
         "source": "https://github.com/vikas-nagar9001/no-loginbot2.git",
         "env": {
-            "BOT_TOKEN": "7842023186:AAFwcroifpE5mA_X-TgRksMZSY8UUbv1LDQ",
-            "API_ID": "24732393",
-            "API_HASH": "ac0d702e4ec6b2d5c232cb5a7e0b7619",
-            "SESSION_STRING":"BQFmhjAAS0Iz3GGrCFF73YDQ1WHZSgcrIn_JfpA1EOSvCmTAiaB4iEnhk4JqDFy-KZeFP_P2Ntu5yU6nzV_9cSWfCXAh7N8A77mYNywJ1_V3re6P1XB3yJY1rLph2TQPrgD-WF2bz7JfShOKnEYFqmS6Xrx_o8IKvwKv2Nzo4krr265ZZ86a5GKVyR-ngIxV7FJDy3vzQ_Wxuw-ZBBlVvhciOO83yuVFK_EKKcMWnETwOpkehdRMb4vHyyYa268KXVSLpoK0Xg70JLte7fYEFGvLemQ-gIHAaVq42u7zK1WW8ooej5UpcxOHCUg8QETDraDgm36eQ8LX8PBg_H7zHYTbKteT3wAAAAGk7nIYAA"
+            "BOT_TOKEN": "7842023186:AA",
+            "API_ID": "2476788",
+            "API_HASH": "ac0d702678678672d5c232cb5a7e0b7619",
+            "SESSION_STRING":"hjf65756765Q1WHZSgcrIn_JfpA1EOSvCmTAiaB4iEnhk4JqDFy-KZeFP_P2Ntu5yU6nzV_9cSWfCXAh7N8A77mYNywJ1_V3re6P1XB3yJY1rLph2TQPrgD-WF2bz7JfShOKnEYFqmS6Xrx_o8IKvwKv2Nzo4krr265ZZ86a5GKVyR-ngIxV7FJDy3vzQ_Wxuw-ZBBlVvhciOO83yuVFK_EKKcMWnETwOpkehdRMb4vHyyYa268KXVSLpoK0Xg70JLte7fYEFGvLemQ-gIHAaVq42u7zK1WW8ooej5UpcxOHCUg8QETDraDgm36eQ8LX8PBg_H7zHYTbKteT3wAAAAGk7nIYAA"
              },
         "run": "main.py"
     },
     "simple-bot": {
         "source": "https://github.com/vikas-nagar9001/savesimplebot.git",
         "env": {
-            "BOT_TOKEN": "7893526740:AAGD5lPUMnFnsuQcxN_pn1ONxVoJWEdnj08",
-            "API_ID": "23496240",
-            "API_HASH": "4d34c085ed3ef0455798f81c0aa01e40",
-            "SESSION_STRING": "BQF5YukAOhPUTkiWJawx1ZPOtkrzE62l6cYZygP8-T6KzfBjLdUk-EEvhmXMUV0IDxGcxFM8_vDqElndOVEuwjgtqIjWosMcYcoDHTROYfIQwjiC3-f9l-MkXDN8dYURorZXk3R6gB2Pte2H9WZDtM5DMqL5E8ZUoDKQvlkEzKqxeCAIi93_3-TizJI3CQf2Rl8EhZZ5w35Wl9KJsLTuLiHIgyLRP0B8Dm11wvUtkVQ7ZPbcOf7vWwUobUrkeNmg77hq2XVPM_yjKesZfdoiHFJXbSbBiToEP0H6MSOJKCRtrCydSi6nidqZS6dV7Jx4NV2DlT3EJIp2PuuH2ffGQMtM_wB2LQAAAABoi0dbAA"
+            "BOT_TOKEN": "789352674rthty6xN_pn1ONxVoJWEdnj08",
+            "API_ID": "23465740",
+            "API_HASH": "4d34c085tryhrtyhtryht1c0aa01e40",
+            "SESSION_STRING": "56756gyhtfgkrzE62l6cYZygP8-T6KzfBjLdUk-EEvhmXMUV0IDxGcxFM8_vDqElndOVEuwjgtqIjWosMcYcoDHTROYfIQwjiC3-f9l-MkXDN8dYURorZXk3R6gB2Pte2H9WZDtM5DMqL5E8ZUoDKQvlkEzKqxeCAIi93_3-TizJI3CQf2Rl8EhZZ5w35Wl9KJsLTuLiHIgyLRP0B8Dm11wvUtkVQ7ZPbcOf7vWwUobUrkeNmg77hq2XVPM_yjKesZfdoiHFJXbSbBiToEP0H6MSOJKCRtrCydSi6nidqZS6dV7Jx4NV2DlT3EJIp2PuuH2ffGQMtM_wB2LQAAAABoi0dbAA"
         },
         "run": "main.py"
+    },
+     "Private-repo": {
+        "source": "https://vikas-nagar9001:ghp_token@github.com/vikas-nagar9001/private.git",
+        "env": {
+            "TOKEN": "yygdrfdgdfgy",
+            "ID": "654645",
+            "HASH": "gdfge54645dfg"
+        },
+        "run": "bot.py"
     }
 }
